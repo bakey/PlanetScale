@@ -1,4 +1,6 @@
 #pragma once
+#include <fstream>
+
 #include "cppjieba/Jieba.hpp"
 #include "document.h"
 #include "filter.h"
@@ -6,6 +8,7 @@
 #include "uchardet.h"
 
 namespace planet_scale {
+namespace fs = std::__fs::filesystem;
 class CorpusManager {
 public:
     enum {
@@ -38,6 +41,7 @@ public:
         return &text_index_;
     }
 private:
+    int detectEncoding(const fs::path& doc_file, std::string& encoding);
     int extractDocument(std::string_view content, std::unique_ptr<Document>& document);
 private:
     std::unique_ptr<Filter> filter_;

@@ -2,7 +2,7 @@
 #include "uchardet.h"
 
 namespace planet_scale {
-class Dector {
+class Detector {
 private:
 
 };
